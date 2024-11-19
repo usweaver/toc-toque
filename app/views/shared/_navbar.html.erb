@@ -2,12 +2,12 @@
   <div class="tt-container">
     <%= image_tag "logo.png", alt: "Toc'Toque", class: "tt-logo-navbar" %>
     <div class= "tt-spacer"></div>
-    <div class="tt-links-navbar">
-      <div class="tt-menu">
+    <div class="tt-links-navbar" data-controller="toggle-nav">
+      <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
         <i class="fa-solid fa-bars"></i>
         <i class="fa-solid fa-user"></i>
       </div>
-      <ul class="tt-hamburger-navbar list-group">
+      <ul class="tt-hamburger-navbar list-group d-none" data-toggle-nav-target="toggleUl">
         <% if user_signed_in? %>
           <%= link_to edit_user_registration_path do %>
             <li class="list-group-item list-group-item-action"><i class="fa-solid fa-user-pen"></i> Modifier le profil</li>
