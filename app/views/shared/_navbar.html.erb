@@ -7,10 +7,23 @@
         <i class="fa-solid fa-bars"></i>
         <i class="fa-solid fa-user"></i>
       </div>
-        <ul class="tt-hamburger-navbar">
-          <li><i class="fa-solid fa-right-to-bracket"></i> <a href="#">Connexion</a></li>
-          <li><i class="fa-solid fa-user-plus"></i> <a href="#">Inscription</a></li>
-        </ul>
+      <ul class="tt-hamburger-navbar list-group">
+        <% if user_signed_in? %>
+          <%= link_to edit_user_registration_path do %>
+            <li class="list-group-item list-group-item-action"><i class="fa-solid fa-user-pen"></i> Modifier le profil</li>
+          <% end %>
+          <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+            <li class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket "></i> Déconnexion</li>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <li class="list-group-item list-group-item-action"><i class="fa-solid fa-right-to-bracket"></i> Connexion</li>
+          <% end %>
+          <%= link_to new_user_registration_path do %>
+            <li class="list-group-item list-group-item-action"><i class="fa-solid fa-user-plus"></i> Inscription</li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
