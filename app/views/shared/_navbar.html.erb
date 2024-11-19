@@ -2,6 +2,14 @@
   <nav class="tt-navbar">
       <%= image_tag "logo.png", alt: "Toc'Toque", class: "tt-logo-navbar" %>
       <div class= "tt-spacer"></div>
+      <%= link_to root_path do %>
+        <div class="btn btn-outline-light me-4"><i class="fa-solid fa-users"></i> Trouver un chef</div>
+      <% end %>
+          <% if user_signed_in? %>
+      <%= link_to bookings_path do %>
+        <div class="btn btn-outline-light me-4"><i class="fa-solid fa-utensils"></i> Mes réservations</div>
+      <% end %>
+      <% end %>
       <div class="tt-links-navbar" data-controller="toggle-nav">
         <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
           <i class="fa-solid fa-bars"></i>
