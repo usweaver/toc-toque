@@ -14,6 +14,7 @@ puts "On créé de nouveaux users"
       first_name: Faker::Name.name,
       last_name: Faker::Artist.name,
       email: Faker::Internet.email,
+      password: "123456"
     )
 end
 
@@ -25,7 +26,7 @@ puts "On créé de nouveaux chefs"
     last_name: Faker::Artist.name,
     category: "French",
     # phone_number:Faker::Config.locale = 'da-DK' Faker::PhoneNumber.cell_phone_with_country_code,
-    phone_number: "06 75 67 82 18"
+    phone_number: "06 75 67 82 18",
     email: Faker::Internet.email,
     daily_price: Faker::Number.number(digits: 3),
     city: Faker::Address.city,
