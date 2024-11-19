@@ -2,24 +2,21 @@
   height: 4rem;
   background-color: $red;
   align-items: center;
+  position: relative;
+  display: flex;
 }
 
 .tt-logo-navbar {
   width: 3.5rem;
 }
 
-.tt-link-navbar {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
 
 .tt-links-navbar {
   position: relative;
 
   ul {
-    display: none;
-    width: 20rem;
+    width: 15rem;
+    margin-top: 0.5rem;
   }
 
   ul a {
@@ -50,8 +47,16 @@ top: 2rem;
 // padding: 0.25rem 0;
 // margin: 0;
 
-  li {
+  // a:first-of-type {
+  //   border-radius: 0.5rem 0.5rem 0 0;
+  // }
 
+  // a:last-of-type {
+  //   border-radius: 0 0 0.5rem 0.5rem;
+  // }
+
+  li a {
+    color: grey;
     // position: relative;
     // padding: 0.75rem 1rem;
     // width: 100%;
@@ -60,6 +65,7 @@ top: 2rem;
     // color: grey;
     // font-weight: bold;
   }
+
 
   li:hover {
     // background-color: grey;
@@ -71,6 +77,7 @@ top: 2rem;
     // color: grey;
     // font-weight: bold;
   }
+
 }
 
 /* ------- Menu Navbar -----------*/
