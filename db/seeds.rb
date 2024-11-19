@@ -3,9 +3,10 @@ require 'date'
 
 puts "On efface la base de donnée"
 
-User.destroy_all
-Chef.destroy_all
 Booking.destroy_all
+Chef.destroy_all
+User.destroy_all
+
 
 puts "On créé de nouveaux users"
 
@@ -19,7 +20,7 @@ puts "On créé de nouveaux users"
 end
 
 puts "On créé de nouveaux chefs"
-
+photos = ["remyShift", "Samsam69004", "usweaver", "lea3738", "Wael-Dev52", "Pereiraadri", "puts-HIROSIE", "Aurelie-bouchon", "ClementTHZ", "AlexandreVlt", "juliavitu"]
 50.times do
   p Chef.create(
     first_name: Faker::Name.name,
@@ -30,7 +31,8 @@ puts "On créé de nouveaux chefs"
     email: Faker::Internet.email,
     daily_price: Faker::Number.number(digits: 3),
     city: Faker::Address.city,
-    user_id: User.all.sample.id
+    user_id: User.all.sample.id,
+    profile_picture_url: "https://github.com/#{photos.sample}.png"
   )
 end
 
