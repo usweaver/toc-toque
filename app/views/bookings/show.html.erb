@@ -1,1 +1,18 @@
-<h1>Vos reservations</h1>
+<div class="d-flex gap-4 align-item-center">
+  <img src=<%=@booking.chef.profile_picture_url%> class="rounded w-50">
+  <div class="d-flex flex-column w-50">
+    <h1 class="mb-4">Votre réservation avec <b> <%=@booking.chef.first_name%> <%=@booking.chef.last_name%></b></h1>
+    <hr>
+    <div>
+    <i class="fa-regular fa-calendar"></i> <%=  @booking.start_date.strftime("%d %B %Y") %>   <i class="fa-solid fa-greater-than"></i>   <%= @booking.end_date.strftime("%d %B %Y") %>
+    </div>
+    <hr>
+      <h4 class="mb-0"><i class="fa-solid fa-utensils"></i> <%=@booking.chef.category%></h4>
+      <hr>
+      <h5><i class="fa-solid fa-location-dot"></i> <%= @booking.chef.city%></h5>
+      <h5><i class="fa-solid fa-phone"></i> <%=@booking.chef.phone_number%></h5>
+      <h5><i class="fa-solid fa-envelope"></i> <%=@booking.chef.email %></h5>
+      <hr>
+      <%=link_to "Retour aux réservations", bookings_path, class: "btn btn-outline-primary"%>
+  </div>
+</div>
