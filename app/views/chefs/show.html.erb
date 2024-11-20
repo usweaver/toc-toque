@@ -14,10 +14,10 @@
       <%= simple_form_for ([@chef, @booking]) do |f|%>
         <%=f.input :start_date, as: :date, html5: true%>
         <%=f.input :end_date, as: :date, html5: true%>
-        <%=f.submit %>
+        <%=f.submit class: "btn btn-primary" %>
       <% end %>
     <%end%>
     <hr>
-    <%=link_to "Retour à la homepage", root_path%>
+    <%=link_to "Retour à la homepage", root_path, class: "btn btn-outline-primary"%>
   </div>
 </div>
