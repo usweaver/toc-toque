@@ -1,5 +1,6 @@
+<div class="d-flex gap-4 align-item-center">
+  <div class="d-flex flex-column w-50">
 <h2>Sign up</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
@@ -27,3 +28,6 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+  </div>
+
+</div>
