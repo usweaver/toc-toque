@@ -4,6 +4,9 @@
       <%= image_tag "logo.png", alt: "Toc'Toque", class: "tt-logo-navbar" %>
     <% end %>
     <div class= "tt-spacer"></div>
+    <% if user_signed_in? %>
+    <div class="text-light me-4">Bonjour <b><%= current_user.first_name %> <%= current_user.last_name %></b></div>
+    <% end %>
     <%= link_to root_path do %>
       <div class="btn btn-outline-light me-4"><i class="fa-solid fa-users"></i> Trouver un chef</div>
     <% end %>
@@ -15,7 +18,11 @@
     <div class="tt-links-navbar" data-controller="toggle-nav">
       <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
         <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-user"></i>
+        <% if user_signed_in? %>
+          <img src="<%= current_user.profile_picture_url %>" alt="" class="rounded-circle border border-secondary" width="25">
+        <% else %>
+          <i class="fa-solid fa-user"></i>
+        <% end %>
       </div>
       <ul class="tt-hamburger-navbar list-group d-none" data-toggle-nav-target="toggleUl">
         <% if user_signed_in? %>
