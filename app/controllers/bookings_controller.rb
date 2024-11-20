@@ -1,8 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @bookings_user = current_user.bookings
-    @chefs = current_user.chefs
-    @bookings_chef = Book
+    @bookings_users = current_user.bookings.order(start_date: :asc)
+    @bookings_chefs = Booking.where(chef_id: current_user.chefs).order(start_date: :asc)
   end
 
   def show
