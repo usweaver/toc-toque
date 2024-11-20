@@ -1,14 +1,20 @@
 class BookingsController < ApplicationController
   def index
-    @bookings_user = current_user.bookings
-    # @chefs = current_user.chefs
-    @bookings_chef = Booking.where(chef_id: current_user.id)
+    @bookings_users = current_user.bookings.order(start_date: :asc)
+    @bookings_chefs = Booking.where(chef_id: current_user.chefs).order(start_date: :asc)
   end
 
   def show
   end
 
   def edit
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to bookings_path
   end
 
   def create

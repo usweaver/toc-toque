@@ -1,11 +1,64 @@
-<h1>Vos réservations</h1>
+<h1 class="mb-3">Mes réservations</h1>
 
-<%@bookings_user.each do |booking|%>
-  <p><%=booking.start_date%></p>
+<h2 class="mb-3">Mes réservations de chefs</h2>
+
+  <ol class="list-group mb-4">
+<%@bookings_users.each do |booking|%>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+      <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
+    <div class="ms-3 me-3" style="width: 20rem">
+      <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
+      <%= booking.chef.category %>
+    </div>
+    <div class="ms-3 me-auto">
+      <div class="fw-bold"><i class="fa-regular fa-calendar"></i> <%= booking.start_date.strftime("%d %B %Y") %> <i class="fa-solid fa-greater-than"></i> <%= booking.end_date.strftime("%d %B %Y") %></div>
+    </div>
+    <div class="ms-3 me-3">
+      <%= link_to chef_path(booking.chef) do %>
+        <div class="btn btn-primary"><i class="fa-solid fa-eye"></i> Voir le chef</div>
+      <% end %>
+    </div>
+  </li>
 <% end %>
+</ol>
 
-<h1>Vos chefs réservés</h1>
+<h2 class="mb-3">Mes chefs réservés</h2>
 
-<%@bookings_chef.each do |booking|%>
-  <p><%=booking.start_date%></p>
+<ol class="list-group mb-4">
+<%@bookings_chefs.each do |booking|%>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+      <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
+    <div class="ms-3 me-3" style="width: 20rem">
+      <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
+      <%= booking.chef.category %> <%= booking.status %>
+    </div>
+    <div class="ms-3 me-auto">
+      <div class="fw-bold"><i class="fa-regular fa-calendar"></i> <%= booking.start_date.strftime("%d %B %Y") %> <i class="fa-solid fa-greater-than"></i> <%= booking.end_date.strftime("%d %B %Y") %></div>
+    </div>
+    <div class="ms-3 me-3">
+      <%= link_to chef_path(booking.chef) do %>
+        <div class="btn btn-primary"><i class="fa-solid fa-eye"></i> Voir le chef</div>
+      <% end %>
+    </div>
+    <% if booking.status == "pending" %>
+    <div class="ms-3 me-3">
+      <%= link_to booking_path(booking.id, status: "confirmed"), data: { turbo_method: :patch } do %>
+        <div class="btn btn-success"><i class="fa-solid fa-check"></i> Accepter</div>
+      <% end %>
+    </div>
+    <div class="ms-3 me-3">
+      <%= link_to booking_path(booking.id, status: "cancelled"), data: { turbo_method: :patch } do %>
+        <div class="btn btn-danger"><i class="fa-solid fa-ban"></i> Refuser</div>
+      <% end %>
+    </div>
+    <% end %>
+    <% if booking.status == "pending" %>
+    <span class="badge text-bg-info rounded-pill"><i class="fa-regular fa-clock"></i> EN ATTENTE</span>
+    <% elsif booking.status == "confirmed" %>
+    <span class="badge text-bg-success rounded-pill"><i class="fa-solid fa-check"></i> ACCEPTÉ</span>
+    <% else %>
+    <span class="badge text-bg-danger rounded-pill"><i class="fa-solid fa-ban"></i> REFUSÉ</span>
+    <% end %>
+  </li>
 <% end %>
+</ol>
