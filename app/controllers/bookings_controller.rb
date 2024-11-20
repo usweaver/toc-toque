@@ -10,6 +10,13 @@ class BookingsController < ApplicationController
   def edit
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to bookings_path
+  end
+
   def create
     @booking = Booking.new(booking_params)
     @chef = Chef.find(params[:chef_id])
