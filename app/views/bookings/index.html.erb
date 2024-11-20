@@ -8,7 +8,7 @@
       <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
     <div class="ms-3 me-3" style="width: 20rem">
       <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
-      <%= booking.chef.category %>
+      <i class="fa-solid fa-utensils"></i> <%= booking.chef.category %>
     </div>
     <div class="ms-3 me-auto">
       <div class="fw-bold"><i class="fa-regular fa-calendar"></i> <%= booking.start_date.strftime("%d %B %Y") %> <i class="fa-solid fa-greater-than"></i> <%= booking.end_date.strftime("%d %B %Y") %></div>
@@ -30,7 +30,7 @@
       <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
     <div class="ms-3 me-3" style="width: 20rem">
       <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
-      <%= booking.chef.category %> <%= booking.status %>
+      <i class="fa-solid fa-utensils"></i> <%= booking.chef.category %>
     </div>
     <div class="ms-3 me-auto">
       <div class="fw-bold"><i class="fa-regular fa-calendar"></i> <%= booking.start_date.strftime("%d %B %Y") %> <i class="fa-solid fa-greater-than"></i> <%= booking.end_date.strftime("%d %B %Y") %></div>
