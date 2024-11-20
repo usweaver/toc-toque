@@ -1,5 +1,8 @@
 class BookingsController < ApplicationController
   def index
+    @bookings_user = current_user.bookings
+    @chefs = current_user.chefs
+    @bookings_chef = Book
   end
 
   def show
