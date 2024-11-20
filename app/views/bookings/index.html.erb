@@ -1,2 +1,11 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>Vos réservations</h1>
+
+<%@bookings_user.each do |booking|%>
+  <p><%=booking.start_date%></p>
+<% end %>
+
+<h1>Vos chefs réservés</h1>
+
+<%@bookings_chef.each do |booking|%>
+  <p><%=booking.start_date%></p>
+<% end %>
