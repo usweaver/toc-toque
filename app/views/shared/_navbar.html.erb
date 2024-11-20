@@ -1,45 +1,47 @@
 <div class="tt-container">
   <nav class="tt-navbar">
+    <%= link_to root_path do %>
       <%= image_tag "logo.png", alt: "Toc'Toque", class: "tt-logo-navbar" %>
-      <div class= "tt-spacer"></div>
-      <%= link_to root_path do %>
-        <div class="btn btn-outline-light me-4"><i class="fa-solid fa-users"></i> Trouver un chef</div>
-      <% end %>
-          <% if user_signed_in? %>
+    <% end %>
+    <div class= "tt-spacer"></div>
+    <%= link_to root_path do %>
+      <div class="btn btn-outline-light me-4"><i class="fa-solid fa-users"></i> Trouver un chef</div>
+    <% end %>
+    <% if user_signed_in? %>
       <%= link_to bookings_path do %>
         <div class="btn btn-outline-light me-4"><i class="fa-solid fa-utensils"></i> Mes réservations</div>
       <% end %>
-      <% end %>
-      <div class="tt-links-navbar" data-controller="toggle-nav">
-        <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
-          <i class="fa-solid fa-bars"></i>
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <ul class="tt-hamburger-navbar list-group d-none" data-toggle-nav-target="toggleUl">
-          <% if user_signed_in? %>
-            <li class="list-group-item list-group-item-action">
-              <%= link_to edit_user_registration_path do %>
-                <i class="fa-solid fa-user-pen"></i> Modifier le profil
-              <% end %>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-                <i class="fa-solid fa-right-from-bracket "></i> Déconnexion
-              <% end %>
-            </li>
-          <% else %>
-              <li class="list-group-item list-group-item-action">
-                <%= link_to new_user_session_path do %>
-                  <i class="fa-solid fa-right-to-bracket"></i> Connexion
-                <% end %>
-              </li>
-              <li class="list-group-item list-group-item-action">
-                <%= link_to new_user_registration_path do %>
-                  <i class="fa-solid fa-user-plus"></i> Inscription
-                <% end %>
-              </li>
-          <% end %>
-        </ul>
+    <% end %>
+    <div class="tt-links-navbar" data-controller="toggle-nav">
+      <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-user"></i>
       </div>
+      <ul class="tt-hamburger-navbar list-group d-none" data-toggle-nav-target="toggleUl">
+        <% if user_signed_in? %>
+          <li class="list-group-item list-group-item-action">
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa-solid fa-user-pen"></i> Modifier le profil
+            <% end %>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+              <i class="fa-solid fa-right-from-bracket "></i> Déconnexion
+            <% end %>
+          </li>
+        <% else %>
+          <li class="list-group-item list-group-item-action">
+            <%= link_to new_user_session_path do %>
+              <i class="fa-solid fa-right-to-bracket"></i> Connexion
+            <% end %>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <%= link_to new_user_registration_path do %>
+              <i class="fa-solid fa-user-plus"></i> Inscription
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </nav>
 </div>

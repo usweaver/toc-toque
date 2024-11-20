@@ -1,6 +1,6 @@
 <div class="d-flex gap-4 align-item-center">
-  <img src=<%=@chef.profile_picture_url%> class="rounded w-100">
-  <div class="d-flex flex-column">
+  <img src=<%=@chef.profile_picture_url%> class="rounded w-50">
+  <div class="d-flex flex-column w-50">
   <h1 class="mb-4">Say Hi to <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
     <h4><i class="fa-solid fa-utensils"></i> <%=@chef.category%></h4>
     <hr>
@@ -12,12 +12,12 @@
 
     <%if user_signed_in?%>
       <%= simple_form_for ([@chef, @booking]) do |f|%>
-        <%=f.input :start_date, as: :date, html5: true%>
-        <%=f.input :end_date, as: :date, html5: true%>
-        <%=f.submit class: "btn btn-primary" %>
+        <%=f.input :start_date, label: "Date de début", as: :date, html5: true%>
+        <%=f.input :end_date, label: "Date de fin",as: :date, html5: true%>
+        <%=f.submit "Réserver", class: "btn btn-primary" %>
       <% end %>
     <%end%>
     <hr>
-    <%=link_to "Retour à la homepage", root_path, class: "btn btn-outline-primary"%>
+    <%=link_to "Retour aux chefs", root_path, class: "btn btn-outline-primary"%>
   </div>
 </div>
