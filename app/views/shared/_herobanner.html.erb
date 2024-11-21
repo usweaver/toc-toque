@@ -1,3 +1,15 @@
 <div class="herobanner mb-4">
-  <%= render "shared/navbar" %>
+  <div class="tt-container d-flex h-100 align-items-center flex-column">
+    <%= render "shared/navbar" %>
+      <%= form_with url: root_path, method: :get, class: "input-group tt-searchbar" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control form-control-lg",
+            placeholder: "Rechercher un chef par nom, ville, type de cuisine ..."
+        %>
+        <%= button_tag(type: "submit", class: "btn btn-light", name: "") do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+      <% end %>
+  </div>
 </div>
