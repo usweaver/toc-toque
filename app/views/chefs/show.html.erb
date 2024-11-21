@@ -4,18 +4,32 @@
   <h1 class="mb-4">Say Hi to <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
     <h4><i class="fa-solid fa-utensils"></i> <%=@chef.category%></h4>
     <hr>
-    <h5><i class="fa-solid fa-location-dot"></i> <%= @chef.city%></h5>
-    <h5><i class="fa-solid fa-phone"></i> <%=@chef.phone_number%></h5>
-    <h5><i class="fa-solid fa-envelope"></i> <%=@chef.email %></h5>
+    <div class="mapcontainer d-flex gap-3">
+      <div class="rounded" style="width: 50%; height: 150px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json%>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+      </div>
+        <div class="detailsontainer d-flex flex-column gap-2 justify-content-center">
+        <h6><i class="fa-solid fa-location-dot"></i> <%= @chef.city%></h5>
+        <h6><i class="fa-solid fa-phone"></i> <%=@chef.phone_number%></h5>
+        <h6><i class="fa-solid fa-envelope"></i> <%=@chef.email %></h5>
+      </div>
+    </div>
     <hr>
     <h4><i class="fa-solid fa-dollar-sign"></i> <%=@chef.daily_price%> par jour</h4>
 
     <%if user_signed_in?%>
       <%= simple_form_for ([@chef, @booking]) do |f|%>
-        <%=f.input :start_date, label: "Date de début", as: :date, html5: true%>
-        <%=f.input :end_date, label: "Date de fin",as: :date, html5: true%>
+        <%= f.input :start_date,
+            label: "Période",
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+
         <%=f.submit "Réserver", class: "btn btn-primary" %>
+
       <% end %>
+
     <%end%>
     <hr>
     <%=link_to "Retour aux chefs", root_path, class: "btn btn-outline-primary"%>
