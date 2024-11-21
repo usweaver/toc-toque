@@ -20,6 +20,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.end_date = params[:booking][:start_date].split.last
+    # "start_date"=>"2024-11-21 to 2024-11-23"
     @chef = Chef.find(params[:chef_id])
     @booking.chef = @chef
     @booking.user = current_user
@@ -34,7 +36,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date)
   end
 
 end
