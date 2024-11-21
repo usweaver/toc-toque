@@ -3,6 +3,11 @@ class ChefsController < ApplicationController
   def show
     @chef = Chef.find(params[:id])
     @booking = Booking.new
+    @markers = [{
+        lat: @chef.latitude,
+        lng: @chef.longitude,
+        marker_html: render_to_string(partial: "shared/marker")
+      }]
   end
 
   def new

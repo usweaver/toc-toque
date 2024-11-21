@@ -4,9 +4,18 @@
   <h1 class="mb-4">Say Hi to <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
     <h4><i class="fa-solid fa-utensils"></i> <%=@chef.category%></h4>
     <hr>
-    <h5><i class="fa-solid fa-location-dot"></i> <%= @chef.city%></h5>
-    <h5><i class="fa-solid fa-phone"></i> <%=@chef.phone_number%></h5>
-    <h5><i class="fa-solid fa-envelope"></i> <%=@chef.email %></h5>
+    <div class="mapcontainer d-flex gap-3">
+      <div class="rounded" style="width: 50%; height: 150px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json%>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+      </div>
+        <div class="detailsontainer d-flex flex-column gap-2 justify-content-center">
+        <h6><i class="fa-solid fa-location-dot"></i> <%= @chef.city%></h5>
+        <h6><i class="fa-solid fa-phone"></i> <%=@chef.phone_number%></h5>
+        <h6><i class="fa-solid fa-envelope"></i> <%=@chef.email %></h5>
+      </div>
+    </div>
     <hr>
     <h4><i class="fa-solid fa-dollar-sign"></i> <%=@chef.daily_price%> par jour</h4>
 
