@@ -12,10 +12,15 @@
 
     <%if user_signed_in?%>
       <%= simple_form_for ([@chef, @booking]) do |f|%>
-        <%=f.input :start_date, label: "Date de début", as: :date, html5: true%>
-        <%=f.input :end_date, label: "Date de fin",as: :date, html5: true%>
+        <%= f.input :start_date,
+            label: "Période",
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+
         <%=f.submit "Réserver", class: "btn btn-primary" %>
+
       <% end %>
+
     <%end%>
     <hr>
     <%=link_to "Retour aux chefs", root_path, class: "btn btn-outline-primary"%>
