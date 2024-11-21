@@ -5,9 +5,10 @@ class Chef < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_chef,
-  against: [ :first_name, :last_name, :city, :category ],
+  against: [ :first_name, :last_name, :city ],
   using: {
     tsearch: { prefix: true }
   }
 
+  CATEGORIES = ["Français", "Asiatique", "Italien", "Corse", "Japonais", "Coréen", "Mexicain"]
 end
