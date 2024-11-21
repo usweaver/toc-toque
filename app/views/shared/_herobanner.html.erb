@@ -1,15 +1,32 @@
 <div class="herobanner mb-4">
   <div class="tt-container d-flex h-100 align-items-center flex-column">
     <%= render "shared/navbar" %>
-      <%= form_with url: root_path, method: :get, class: "input-group tt-searchbar" do %>
-        <%= text_field_tag :query,
+    <%= form_with url: root_path, method: :get do %>
+    <div class="input-group tt-searchbar">
+      <%= text_field_tag :query,
             params[:query],
             class: "form-control form-control-lg",
-            placeholder: "Rechercher un chef par nom, ville, type de cuisine ..."
+            placeholder: "Rechercher un chef par prénom, nom, ville ..."
         %>
-        <%= button_tag(type: "submit", class: "btn btn-light", name: "") do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
+      <%= button_tag(type: "submit", class: "btn btn-light", name: "") do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+    <div class="tt-filtersbar mt-4 d-flex align-items-center justify-content-center">
+    <div class="d-flex justify-content-center align-items-center gap-3">
+      <% Chef::CATEGORIES.each do |category| %>
+        <% if params[:category] == category %>
+          <%= button_tag(type: "submit", class: "btn btn-dark btn-sm", name: "category", value: "") do %>
+            <i class="fa-solid fa-utensils"></i> <%= category %>
+          <% end %>
+        <% else %>
+          <%= button_tag(type: "submit", class: "btn btn-outline-light btn-sm", name: "category", value: category) do %>
+            <i class="fa-solid fa-utensils"></i> <%= category %>
+          <% end %>
         <% end %>
       <% end %>
+    </div>
+    <% end %>
+    </div>
   </div>
 </div>
