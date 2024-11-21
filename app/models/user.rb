@@ -6,4 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :bookings
   has_many :chefs
+  validates :first_name, presence: true, length: { minimum: 2 }
+  validates :last_name, presence: true
+  validates :profile_picture, presence: true
 end
