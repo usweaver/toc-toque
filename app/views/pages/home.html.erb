@@ -1,19 +1,43 @@
-<div class="cards">
-  <% @chefs.each do |chef|%>
-  <%= link_to chef_path(chef) do %>
-    <div class="new-card d-flex align-items-center">
-      <div class="poster">
-        <img src="<%= chef.profile_picture_url %>" alt="">
-      </div>
-      <div class="details">
-        <div class="name d-flex">
-          <p><%= chef.first_name.truncate(18) %></p>
-          <p><%= chef.last_name.truncate(18) %></p>
-        </div>
-          <p> <i class="fa-solid fa-location-dot"></i> <%= chef.city.truncate(18) %></p>
-        <p><i class="fa-solid fa-utensils"></i> <%= chef.category %></p>
+<% if @chefs.present? %>
+  <div class="row">
+
+    <div class="col-6 my-3">
+      <div class="row">
+
+        <% @chefs.each do |chef|%>
+        <%= link_to chef_path(chef), class: "col-6 mb-3 p-0" do %>
+          <div class="new-card d-flex align-items-center">
+            <div class="poster">
+              <img src="<%= chef.profile_picture_url %>" alt="">
+            </div>
+            <div class="details">
+              <div class="name d-flex">
+                <p><%= chef.first_name.truncate(18) %></p>
+                <p><%= chef.last_name.truncate(18) %></p>
+              </div>
+                <p> <i class="fa-solid fa-location-dot"></i> <%= chef.city.truncate(18) %></p>
+              <p><i class="fa-solid fa-utensils"></i> <%= chef.category %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <% end %>
-  <% end %>
+
+    <div class="col-6 sticky-top" style="height: 100vh">
+
+        <div class="rounded my-3" style="height: 96%"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json%>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']%>">
+        </div>
+
+    </div>
+
+  </div>
+<% else %>
+<div class="d-flex flex-column align-items-center justify-content-center gap-4">
+  <%= image_tag "logo_hunger.png", height: 100, width: 100, alt: "Logo" %>
+  <h2>Pas de chef trouvé</h1>
 </div>
+<% end %>
