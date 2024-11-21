@@ -1,0 +1,17 @@
+.tt-searchbar {
+  width: 100%;
+  margin-top: 3.5rem;
+  input {
+    background-color: rgba($color: #FFFF, $alpha: 0.1);
+    color: white;
+  }
+
+  input::placeholder {
+    color: rgba($color: #FFFF, $alpha: 0.5);
+  }
+
+  button {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    color: black;
+  }
+}
