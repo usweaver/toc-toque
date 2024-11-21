@@ -5,8 +5,8 @@
   <ol class="list-group mb-4">
 <%@bookings_users.each do |booking|%>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-  <%= link_to booking_path(booking) do%>
-      <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
+  <%= link_to booking_path(booking) do %>
+      <%= cl_image_tag booking.chef.chef_picture.key, class: "rounded-circle ms-2", height: 72, width: 72 %>
     <% end %>
     <div class="ms-3 me-3" style="width: 20rem">
       <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
@@ -29,7 +29,7 @@
 <ol class="list-group mb-4">
 <%@bookings_chefs.each do |booking|%>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-      <img src="<%= booking.chef.profile_picture_url %>" alt="<%= booking.chef.first_name %> <%= booking.chef.last_name %>" class="rounded-circle ms-2" width="72">
+      <%= cl_image_tag booking.chef.chef_picture.key, class: "rounded-circle ms-2", height: 72, width: 72 %>
     <div class="ms-3 me-3" style="width: 20rem">
       <div class="fw-bold"><%= booking.chef.first_name %> <%= booking.chef.last_name %></div>
       <i class="fa-solid fa-utensils"></i> <%= booking.chef.category %>

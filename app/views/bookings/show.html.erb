@@ -1,5 +1,5 @@
 <div class="d-flex gap-4 align-item-center">
-  <img src=<%=@booking.chef.profile_picture_url%> class="rounded w-50">
+  <%= cl_image_tag @booking.chef.chef_picture.key, class: "rounded w-50" %>
   <div class="d-flex flex-column w-50">
     <h1 class="mb-4">Votre réservation avec <b> <%=@booking.chef.first_name%> <%=@booking.chef.last_name%></b></h1>
     <hr>

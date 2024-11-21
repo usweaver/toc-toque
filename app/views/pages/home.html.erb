@@ -3,7 +3,7 @@
   <%= link_to chef_path(chef) do %>
     <div class="new-card d-flex align-items-center">
       <div class="poster">
-        <img src="<%= chef.profile_picture_url %>" alt="">
+        <%= cl_image_tag chef.chef_picture.key %>
       </div>
       <div class="details">
         <div class="name d-flex">

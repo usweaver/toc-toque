@@ -1,5 +1,5 @@
 <div class="d-flex gap-4 align-item-center">
-  <img src=<%=@chef.profile_picture_url%> class="rounded w-50">
+  <%= cl_image_tag @chef.chef_picture.key, class: "rounded w-50" %>
   <div class="d-flex flex-column w-50">
   <h1 class="mb-4">Say Hi to <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
     <h4><i class="fa-solid fa-utensils"></i> <%=@chef.category%></h4>
