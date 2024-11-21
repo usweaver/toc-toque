@@ -19,7 +19,7 @@
       <div class="tt-menu" data-toggle-nav-target="toggleMenu" data-action="click->toggle-nav#openMenu">
         <i class="fa-solid fa-bars"></i>
         <% if user_signed_in? %>
-          <img src="<%= current_user.profile_picture_url %>" alt="" class="rounded-circle border border-secondary" width="25">
+          <%= cl_image_tag current_user.profile_picture.key, height: 25, width: 25, crop: :fill, class: "rounded-circle border border-secondary" %>
         <% else %>
           <i class="fa-solid fa-user"></i>
         <% end %>

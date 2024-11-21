@@ -1,5 +1,6 @@
 require 'faker'
 require 'date'
+require 'open-uri'
 Faker::Config.locale = 'fr'
 puts "On efface la base de donnée"
 
@@ -11,22 +12,30 @@ photos = ["remyShift", "Samsam69004", "usweaver", "lea3738", "Wael-Dev52", "Pere
 
 puts "On créé de nouveaux users"
 
-50.times do
-    p User.create(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      email: Faker::Internet.email,
-      password: "123456",
-      profile_picture_url: "https://github.com/#{photos.sample}.png"
+11.times do
+  user_image = photos.sample
+  file = URI.parse("https://github.com/#{user_image}.png").open
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "123456",
     )
-end
+    user.profile_picture.attach(io: file, filename: "#{user_image}.png", content_type: "image/png")
+    user.save
+    photos.delete(user_image)
+  end
 
-puts "On créé de nouveaux chefs"
+  puts "On créé de nouveaux chefs"
+photos = ["remyShift", "Samsam69004", "usweaver", "lea3738", "Wael-Dev52", "Pereiraadri", "puts-HIROSIE", "Aurelie-bouchon", "ClementTHZ", "AlexandreVlt", "juliavitu"]
 category = ["Français", "Asiatique", "Italien", "Corse", "Japonais", "Coréen", "Mexicain"]
-50.times do
+
+30.times do
+  chef_image = photos.sample
+  file = URI.parse("https://github.com/#{chef_image}.png").open
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  p Chef.create(
+  chef = Chef.new(
     first_name: first_name,
     last_name: last_name,
     category: category.sample,
@@ -36,17 +45,20 @@ category = ["Français", "Asiatique", "Italien", "Corse", "Japonais", "Coréen",
     daily_price: Faker::Number.number(digits: 3),
     city: Faker::Address.city,
     user_id: User.all.sample.id,
-    profile_picture_url: "https://github.com/#{photos.sample}.png"
   )
+  chef.chef_picture.attach(io: file, filename: "#{chef_image}.png", content_type: "image/png")
+  chef.save
 end
 
 puts "On créé de nouveaux bookmarks"
 
 50.times do
-  p Booking.create(
+  Booking.create(
     start_date: Date.today,
     end_date: Date.today + rand(1..10).days,
     user_id: User.all.sample.id,
     chef_id: Chef.all.sample.id
   )
 end
+
+puts "Seeding completed ✅"
