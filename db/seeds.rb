@@ -29,6 +29,7 @@ puts "On créé de nouveaux users"
   puts "On créé de nouveaux chefs"
 photos = ["remyShift", "Samsam69004", "usweaver", "lea3738", "Wael-Dev52", "Pereiraadri", "puts-HIROSIE", "Aurelie-bouchon", "ClementTHZ", "AlexandreVlt", "juliavitu"]
 category = ["Français", "Asiatique", "Italien", "Corse", "Japonais", "Coréen", "Mexicain"]
+cities = ["Lyon", "Paris", "Marseille", "Toulouse"]
 
 30.times do
   chef_image = photos.sample
@@ -43,7 +44,7 @@ category = ["Français", "Asiatique", "Italien", "Corse", "Japonais", "Coréen",
     phone_number: "06 75 67 82 18",
     email: "#{first_name.downcase}_#{last_name.downcase}@gmail.com",
     daily_price: Faker::Number.number(digits: 3),
-    city: Faker::Address.city,
+    city: cities.sample,
     user_id: User.all.sample.id,
   )
   chef.chef_picture.attach(io: file, filename: "#{chef_image}.png", content_type: "image/png")
