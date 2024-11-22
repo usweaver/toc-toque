@@ -2,11 +2,14 @@
   <% if chef.chef_picture.attached? %>
     <%= cl_image_tag(chef.chef_picture.key, class:"rounded-circle border border-dark", style:"width: 40%") %>
   <% end %>
-  <div class="d-flex flex-column gap-2 align-items-center">
+  <div class="d-flex flex-column align-items-center">
     <div class="d-flex justify-content-center gap-1">
-      <h2 class="fs-6 text"><%= chef.first_name %></h2>
+      <h2 class="fs-6 text fw-bold"><%= chef.first_name %></h2>
       <h2 class="fs-6 text"> <%= chef.last_name %></h2>
     </div>
-    <p><%= chef.city %></p>
+    <p class="mb-1 fw-bold"><i class="fa-solid fa-location-dot"></i> <%= chef.city.split.last %></p>
+    <%= link_to chef_path(chef), class: "btn btn-primary btn-sm" do %>
+      Voir le chef
+    <% end %>
   </div>
 </div>

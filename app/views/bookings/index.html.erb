@@ -13,6 +13,13 @@
       <div class="ms-3 me-auto">
         <div class="fw-bold"><i class="fa-regular fa-calendar"></i> <%= booking.start_date.strftime("%d %B %Y") %> <i class="fa-solid fa-greater-than"></i> <%= booking.end_date.strftime("%d %B %Y") %></div>
       </div>
+      <% if booking.status == "pending" %>
+        <span class="badge text-bg-info rounded-pill me-3"><i class="fa-regular fa-clock"></i> EN ATTENTE</span>
+      <% elsif booking.status == "confirmed" %>
+        <span class="badge text-bg-success rounded-pill me-3"><i class="fa-solid fa-check"></i> ACCEPTÉ</span>
+      <% else %>
+        <span class="badge text-bg-danger rounded-pill me-3"><i class="fa-solid fa-ban"></i> REFUSÉ</span>
+      <% end %>
       <div class="ms-3 me-3">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

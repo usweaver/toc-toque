@@ -1,7 +1,7 @@
 <div class="d-flex gap-4 align-item-center">
   <%= cl_image_tag @chef.chef_picture.key, class: "rounded w-50" %>
   <div class="d-flex flex-column w-50">
-  <h1 class="mb-4">Say Hi to <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
+  <h1 class="mb-4">Chef <b> <%=@chef.first_name%> <%=@chef.last_name%></b></h1>
     <h4><i class="fa-solid fa-utensils"></i> <%=@chef.category%></h4>
     <hr>
     <div class="mapcontainer d-flex gap-3">
