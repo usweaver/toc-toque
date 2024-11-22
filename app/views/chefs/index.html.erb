@@ -14,7 +14,7 @@
         </div>
         <p class="card-text"><i class="fa-solid fa-location-dot"></i> <%= chef.city %></p>
         <p class="card-text"><i class="fa-solid fa-utensils"></i> <%= chef.category %></p>
-        <p class="card-text"><strong>$<%= chef.daily_price %></strong></p>
+        <p class="card-text"><strong><%= chef.daily_price %></strong> <i class="fa-solid fa-euro-sign"></i></p>
         <div class="d-flex justify-content-center">
           <%= link_to "Voir le chef", chef_path(chef), class: "btn btn-outline-primary" %>
         </div>
