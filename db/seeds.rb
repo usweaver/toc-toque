@@ -2,7 +2,7 @@ require 'faker'
 require 'date'
 require 'open-uri'
 Faker::Config.locale = 'fr'
-puts "On efface la base de donnée"
+puts "On efface la base de données"
 
 Booking.destroy_all
 Chef.destroy_all
@@ -21,6 +21,16 @@ puts "On créé de nouveaux users"
     )
   user.profile_picture.attach(io: file, filename: "ClementTHZ.png", content_type: "image/png")
   user.save
+
+  file = URI.parse("https://github.com/ClementTHZ.png").open
+  dummy_user = User.new(
+    first_name: "Dummy",
+    last_name: "User",
+    email: "dummy@gmail.com",
+    password: "123456",
+    )
+  dummy_user.profile_picture.attach(io: file, filename: "ClementTHZ.png", content_type: "image/png")
+  dummy_user.save
 
 # 11.times do
 #   user_image = photos.sample
@@ -60,7 +70,7 @@ chefs.each do |chef|
     email: "#{combination}@gmail.com",
     daily_price: Faker::Number.number(digits: 3),
     city: chef[:city],
-    user_id: user.id,
+    user_id: User.all.sample.id,
   )
   new_chef.chef_picture.attach(io: file, filename: "#{combination}.jpg", content_type: "image/jpg")
   new_chef.save
@@ -89,10 +99,11 @@ end
 
 puts "On créé de nouveaux bookings"
 
-50.times do
+5.times do
+  start_date = Date.today + rand(1..10).days
   Booking.create(
-    start_date: Date.today,
-    end_date: Date.today + rand(1..10).days,
+    start_date: start_date,
+    end_date: start_date + rand(1..10).days,
     user_id: User.all.sample.id,
     chef_id: Chef.all.sample.id
   )
