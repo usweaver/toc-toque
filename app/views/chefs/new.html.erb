@@ -12,7 +12,7 @@
           <%= f.input :last_name, label: "Nom" %>
         </div>
       </div>
-        <%= f.input :category, label: "Catégorie" %>
+        <%= f.input :category, collection: Chef::CATEGORIES, label: "Catégorie" %>
         <%= f.input :phone_number, label: "Numéro de téléphone" %>
         <%= f.input :email %>
         <%= f.input :daily_price, label: "Tarif journalier" %>
