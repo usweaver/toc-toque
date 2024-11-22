@@ -2,7 +2,7 @@ class ChefsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @chefs = Chef.where(user_id: current_user.id)
+    @chefs = Chef.where(user_id: current_user.id).order(id: :asc)
   end
 
   def show
