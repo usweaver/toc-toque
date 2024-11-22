@@ -1,0 +1,26 @@
+<div class="row gap-4 justify-content-center">
+  <% @chefs.each do |chef| %>
+    <div class="card p-0 shadow" style="width: 18rem;">
+      <div class="w-100 p-0">
+        <%= cl_image_tag(chef.chef_picture.key, class: "w-100 rounded-top")%>
+      </div>
+      <div class="card-body">
+        <div class="d-flex gap-2">
+          <h5 class="card-title fw-bold"><%= chef.first_name %></h5>
+          <h5 class="card-title"><%= chef.last_name %></h5>
+          <%= link_to edit_chef_path(chef) do %>
+            <i class="fa-solid fa-pen-to-square text-dark"></i>
+          <% end %>
+        </div>
+        <p class="card-text"><i class="fa-solid fa-location-dot"></i> <%= chef.city %></p>
+        <p class="card-text"><i class="fa-solid fa-utensils"></i> <%= chef.category %></p>
+        <p class="card-text"><strong>$<%= chef.daily_price %></strong></p>
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-primary">Voir le chef</a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <%= link_to "Ajouter un chef", new_chef_path, class: "btn btn-primary my-4" %>
+  </div>
+</div>
