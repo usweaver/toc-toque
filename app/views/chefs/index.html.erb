@@ -16,7 +16,7 @@
         <p class="card-text"><i class="fa-solid fa-utensils"></i> <%= chef.category %></p>
         <p class="card-text"><strong>$<%= chef.daily_price %></strong></p>
         <div class="d-flex justify-content-center">
-          <a href="#" class="btn btn-outline-primary">Voir le chef</a>
+          <%= link_to "Voir le chef", chef_path(chef), class: "btn btn-outline-primary" %>
         </div>
       </div>
     </div>
