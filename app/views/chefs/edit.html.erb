@@ -1,2 +1,27 @@
-<h1>Chefs#edit</h1>
-<p>Find me in app/views/chefs/edit.html.erb</p>
+<div class="d-flex gap-4 align-item-center">
+  <%= image_tag "edit.jpg", alt: "Le Wagon", class: "w-50 rounded "%>
+  <div class="d-flex flex-column w-50">
+    <h2>Mettre à jour le chef</h2>
+    <div class="mb-4">
+      <%= simple_form_for(@chef) do |f| %>
+      <div class="d-flex gap-2">
+        <div class="col-6">
+          <%= f.input :first_name, label: "Prénom"%>
+        </div>
+        <div class="col-6">
+          <%= f.input :last_name, label: "Nom" %>
+        </div>
+      </div>
+        <%= f.input :category, label: "Catégorie" %>
+        <%= f.input :phone_number, label: "Numéro de téléphone" %>
+        <%= f.input :email %>
+        <%= f.input :daily_price, label: "Tarif journalier" %>
+        <%= f.input :city, label: "Adresse" %>
+        <div class="col-6 mb-2">
+          <%= f.input :chef_picture, label: "Photo de profil", as: :file,required: true, autofocus: true, class: "w-50"%>
+        </div>
+        <%= f.submit "Mettre à jour", class: "btn btn-primary w-100" %>
+    <% end %>
+    </div>
+  </div>
+</div>

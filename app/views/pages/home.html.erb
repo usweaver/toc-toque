@@ -8,7 +8,9 @@
         <%= link_to chef_path(chef), class: "col-6 mb-3 p-0" do %>
           <div class="new-card d-flex align-items-center">
             <div class="poster">
-              <%= cl_image_tag(chef.chef_picture.key) %>
+              <% if chef.chef_picture.attached? %>
+                <%= cl_image_tag(chef.chef_picture.key) %>
+              <% end %>
             </div>
             <div class="details">
               <div class="name d-flex">
